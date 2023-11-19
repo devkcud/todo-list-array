@@ -48,13 +48,23 @@ function removeTodo(uuid) {
   return true;
 }
 
-/** Retorna o objeto **todos**.
+/** Retorna um item do objeto **todos** ou o objeto inteiro.
  *
- * @returns {object} O objeto com os itens dentro do **todos**. `{ 'uuid': { description: 'Buy milk', done: false }, ... }`
+ * @example `{ 'uuid': { description: 'Buy milk', done: false }, ... }`
+ * @param {string} [id = ''] - O ID do item a ser retornado. [default: `''`]
+ * @returns {object | null} O objeto com os itens do **todos** ou um item só (retorna `null` caso o id não exista).
  */
-function getTodos() {
-  return todos;
+function getTodo(id = "") {
+  if (!id) {
+    return todos;
+  }
+
+  if (!todos[id]) {
+    return null;
+  }
+
+  return todos[id];
 }
 
 // Exportação de funções
-export { addTodo, removeTodo, getTodos };
+export { addTodo, removeTodo, getTodo };

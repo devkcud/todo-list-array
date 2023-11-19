@@ -1,8 +1,10 @@
-import { addTodo, getTodos } from './todo.js';
+import { addTodo, getTodo } from './todo.js';
 
 addTodo('Buy milk');
 addTodo('Buy eggs');
 addTodo('Buy bread');
-addTodo('Buy cheese');
+const uuid = addTodo('Buy cheese');
 
-console.table(getTodos());
+console.table(getTodo());
+console.table(getTodo('uuid'));
+console.table(getTodo(uuid));
