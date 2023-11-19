@@ -11,8 +11,11 @@ function createListItem(uuid, todo) {
     render();
   });
 
-  const span = document.createElement("span");
-  span.textContent = todo.description;
+  const description = document.createElement("input");
+  description.value = todo.description;
+  description.addEventListener("change", () => {
+    todo.description = description.value;
+  });
 
   const button = document.createElement("button");
   button.textContent = "X";
@@ -22,7 +25,7 @@ function createListItem(uuid, todo) {
     render();
   });
 
-  item.append(checkbox, span, button);
+  item.append(checkbox, description, button);
 
   return item;
 }
