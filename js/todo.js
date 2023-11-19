@@ -15,6 +15,11 @@ const todos = {
   */
 };
 
+// Carrega os dados do localStorage caso existam
+if (localStorage.getItem("todos")) {
+  todos = JSON.parse(localStorage.getItem("todos"));
+}
+
 /** Adiciona uma tarefa no objeto **todos**.
  *
  * @param {string} description - A descrição da tarefa.
@@ -27,6 +32,9 @@ function addTodo(description, done = false) {
 
   // Adiciona a tarefa
   todos[uuid] = { description, done };
+
+  // Salva os dados no localStorage
+  localStorage.setItem("todos", JSON.stringify(todos));
 
   // Retorna o ID para futuras referências
   return uuid;
@@ -45,6 +53,10 @@ function removeTodo(uuid) {
 
   // Caso a tarefa exista, remova-a do objeto **todos** e retorna verdadeiro
   delete todos[uuid];
+
+  // Salva os dados no localStorage
+  localStorage.setItem("todos", JSON.stringify(todos));
+
   return true;
 }
 
@@ -55,14 +67,17 @@ function removeTodo(uuid) {
  * @returns {object | null} O objeto com os itens do **todos** ou um item só (retorna `null` caso o id não exista).
  */
 function getTodo(id = "") {
+  // Retorna todos os itens caso o id seja vazio
   if (!id) {
     return todos;
   }
 
+  // Retorna null caso o item não exista
   if (!todos[id]) {
     return null;
   }
 
+  // Retorna o item caso o id exista
   return todos[id];
 }
 
