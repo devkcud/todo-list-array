@@ -14,3 +14,5 @@ form.addEventListener("submit", (event) => {
 
   render();
 });
+
+render();

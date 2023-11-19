@@ -1,4 +1,4 @@
-import { getTodo, removeTodo } from "./todo.js";
+import { __updateLocalStorage, getTodo, removeTodo } from "./todo.js";
 
 function createListItem(uuid, todo) {
   const item = document.createElement("li");
@@ -8,6 +8,7 @@ function createListItem(uuid, todo) {
   checkbox.checked = todo.done;
   checkbox.addEventListener("change", () => {
     todo.done = checkbox.checked;
+    __updateLocalStorage();
     render();
   });
 
@@ -15,6 +16,7 @@ function createListItem(uuid, todo) {
   description.value = todo.description;
   description.addEventListener("change", () => {
     todo.description = description.value;
+    __updateLocalStorage();
   });
 
   const button = document.createElement("button");

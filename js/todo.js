@@ -6,7 +6,7 @@
  * @property {string} todos.uuid.description
  * @property {boolean} todos.uuid.done
  */
-const todos = {
+let todos = {
   /* TEMPLATE:
   'uuid': {
     description: 'Buy milk',
@@ -18,6 +18,12 @@ const todos = {
 // Carrega os dados do localStorage caso existam
 if (localStorage.getItem("todos")) {
   todos = JSON.parse(localStorage.getItem("todos"));
+}
+
+// Salva os dados no localStorage
+// TODO: Remover essa função e usar outro método de salvamento; não é tão ideal ter diversas vezes essa função por todo o código
+function __updateLocalStorage() {
+  localStorage.setItem("todos", JSON.stringify(todos));
 }
 
 /** Adiciona uma tarefa no objeto **todos**.
@@ -34,13 +40,14 @@ function addTodo(description, done = false) {
   todos[uuid] = { description, done };
 
   // Salva os dados no localStorage
-  localStorage.setItem("todos", JSON.stringify(todos));
+  __updateLocalStorage();
 
   // Retorna o ID para futuras referências
   return uuid;
 }
 
-/** (Tenta) Remover uma tarefa do objeto **todos**.
+/**
+ * (Tenta) Remover uma tarefa do objeto **todos**.
  *
  * @param {string} uuid - O ID da tarefa a ser removida.
  * @returns {boolean} Se a tarefa foi removida
@@ -55,16 +62,18 @@ function removeTodo(uuid) {
   delete todos[uuid];
 
   // Salva os dados no localStorage
-  localStorage.setItem("todos", JSON.stringify(todos));
+  __updateLocalStorage();
 
   return true;
 }
 
-/** Retorna um item do objeto **todos** ou o objeto inteiro.
+/**
+ * Retorna um item do objeto **todos** ou o objeto inteiro.
  *
  * @example `{ 'uuid': { description: 'Buy milk', done: false }, ... }`
  * @param {string} [id = ''] - O ID do item a ser retornado. [default: `''`]
- * @returns {object | null} O objeto com os itens do **todos** ou um item só (retorna `null` caso o id não exista).
+ * @returns {object | null} O objeto com os itens do **todos** ou um item só
+ *     (retorna `null` caso o id não exista).
  */
 function getTodo(id = "") {
   // Retorna todos os itens caso o id seja vazio
@@ -82,4 +91,4 @@ function getTodo(id = "") {
 }
 
 // Exportação de funções
-export { addTodo, removeTodo, getTodo };
+export { addTodo, removeTodo, getTodo, __updateLocalStorage };
