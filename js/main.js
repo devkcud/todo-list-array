@@ -1,10 +1,16 @@
-import { addTodo, getTodo } from './todo.js';
+import { addTodo } from "./todo.js";
+import { render } from "./render.js";
 
-addTodo('Buy milk');
-addTodo('Buy eggs');
-addTodo('Buy bread');
-const uuid = addTodo('Buy cheese');
+const form = document.querySelector("form");
 
-console.table(getTodo());
-console.table(getTodo('uuid'));
-console.table(getTodo(uuid));
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const input = form.querySelector("input");
+
+  addTodo(input.value);
+
+  input.value = "";
+
+  render();
+});
