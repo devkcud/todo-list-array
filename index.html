@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Todo</title>
+
+    <link rel="stylesheet" href="css/global.css" />
+    <script src="js/todo.js" type="module"></script>
+    <script src="js/render.js" type="module"></script>
+    <script src="js/main.js" type="module" defer></script>
+  </head>
+  <body>
+    <main>
+      <form action="javascript:void(0)">
+        <input type="text">
+
+        <button type="submit">Adicionar</button>
+      </form>
+
+      <section id="lists">
+        <ul id="todo">
+          <!-- TODO TEMPLATE:
+          <li>
+            <input type="checkbox">
+            <span>{NOME}</span>
+            <button>X</button>
+          </li>
+          -->
+        </ul>
+        <ul id="done">
+          <!-- DONE TEMPLATE:
+          <li>
+            <input type="checkbox" checked>
+            <span>{NOME}</span>
+            <button>X</button>
+          </li>
+          -->
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
