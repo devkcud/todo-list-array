@@ -12,12 +12,13 @@ function createListItem(uuid, todo) {
   const item = document.createElement("li");
 
   // Cria os elementos input
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  checkbox.checked = todo.done;
+  const checkbox = document.createElement("button");
+  checkbox.classList.add("checkbox");
+  todo.done && checkbox.classList.add("done");
+
   // Atualiza o estado da tarefa
-  checkbox.addEventListener("change", () => {
-    todo.done = checkbox.checked;
+  checkbox.addEventListener("click", () => {
+    todo.done = !checkbox.classList.contains("done");
     __updateLocalStorage();
     // Atualiza a visualização
     render();
@@ -26,6 +27,7 @@ function createListItem(uuid, todo) {
   // Cria o elemento de descrição
   // A descrição pode ser alterada
   const description = document.createElement("input");
+  description.type = "text";
   description.value = todo.description;
   // Atualiza a descrição da tarefa
   description.addEventListener("change", () => {
