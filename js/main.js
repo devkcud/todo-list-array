@@ -22,4 +22,5 @@ form.addEventListener("submit", (event) => {
   render();
 });
 
-render();
+// Atualiza a visualização quando a página carrega
+window.addEventListener("load", render);
