@@ -46,8 +46,7 @@ function addTodo(description, done = false) {
   return uuid;
 }
 
-/**
- * (Tenta) Remover uma tarefa do objeto **todos**.
+/** (Tenta) Remover uma tarefa do objeto **todos**.
  *
  * @param {string} uuid - O ID da tarefa a ser removida.
  * @returns {boolean} Se a tarefa foi removida
@@ -67,8 +66,7 @@ function removeTodo(uuid) {
   return true;
 }
 
-/**
- * Retorna um item do objeto **todos** ou o objeto inteiro.
+/** Retorna um item do objeto **todos** ou o objeto inteiro.
  *
  * @example `{ 'uuid': { description: 'Buy milk', done: false }, ... }`
  * @param {string} [id = ''] - O ID do item a ser retornado. [default: `''`]
