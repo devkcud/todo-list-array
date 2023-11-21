@@ -53,8 +53,6 @@ function addTodo(description, done = false) {
     uuid = window.crypto.randomUUID();
   }
 
-  console.log(uuid);
-
   // Adiciona a tarefa
   todos[uuid] = { description, done };
 
