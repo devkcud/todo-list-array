@@ -24,6 +24,34 @@ if (localStorage.getItem("todos")) {
 // TODO: Remover essa função e usar outro método de salvamento; não é tão ideal ter diversas vezes essa função por todo o código
 function __updateLocalStorage() {
   localStorage.setItem("todos", JSON.stringify(todos));
+  localStorage.clear();
+  localStorage.removeItem("todos");
+}
+
+/** Gera um UUID
+ *
+ * @returns {string}
+ */
+function __genUUID() {
+  // Verifica se o browser suporta a função `crypto.randomUUID()`
+  // Geralmente a função `crypto.randomUUID()` existe em todos os navegadores
+  // e pode ser usada para gerar UUIDs de forma específica
+  // Um erro comum é quando o servidor não é local (conexão não segura HTTP ou
+  // diferente de localhost/127.0.0.1)
+  if (!(window.crypto.randomUUID instanceof Function)) {
+    // Implementação alternativa
+    // https://stackoverflow.com/a/2117523
+    return "10000000-1000-4000-8000-100000000000"
+      .replace(
+        /[018]/g,
+        (c) =>
+          c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4))),
+      )
+      .toString(16);
+  } else {
+    // Standard
+    return window.crypto.randomUUID();
+  }
 }
 
 /** Adiciona uma tarefa no objeto **todos**.
@@ -34,23 +62,11 @@ function __updateLocalStorage() {
  */
 function addTodo(description, done = false) {
   // Gera um ID único aleatório
-  let uuid;
+  let uuid = __genUUID();
 
-  // Verifica se o browser suporta a função `crypto.randomUUID()`
-  if (!(window.crypto.randomUUID instanceof Function)) {
-    console.log("Seu navegador não suporta a função `crypto.randomUUID()`");
-    console.log("Usando método alternativo")
-
-    // Implementação alternativa
-    uuid = ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[-1]/g, (c) =>
-      (
-        c ^
-        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
-      ).toString(16),
-    );
-  } else {
-    // Standard
-    uuid = window.crypto.randomUUID();
+  // Tenta gerar um ID não existente (caso o ID gerado anteriormente já esteja sendo usado)
+  while (todos[uuid]) {
+    uuid = __genUUID();
   }
 
   // Adiciona a tarefa
