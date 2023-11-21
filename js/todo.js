@@ -24,6 +24,7 @@ if (localStorage.getItem("todos")) {
 // TODO: Remover essa função e usar outro método de salvamento; não é tão ideal ter diversas vezes essa função por todo o código
 function __updateLocalStorage() {
   localStorage.setItem("todos", JSON.stringify(todos));
+  console.log(todos);
 }
 
 /** Adiciona uma tarefa no objeto **todos**.

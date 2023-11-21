@@ -11,14 +11,17 @@ function createListItem(uuid, todo) {
   // Cria o elemento LI
   const item = document.createElement("li");
 
+  if (todo.done) {
+    item.classList.add("done");
+  }
+
   // Cria os elementos input
   const checkbox = document.createElement("button");
   checkbox.classList.add("checkbox");
-  todo.done && checkbox.classList.add("done");
 
   // Atualiza o estado da tarefa
   checkbox.addEventListener("click", () => {
-    todo.done = !checkbox.classList.contains("done");
+    todo.done = !item.classList.contains("done");
     __updateLocalStorage();
     // Atualiza a visualização
     render();
@@ -38,6 +41,7 @@ function createListItem(uuid, todo) {
 
   // Cria o elemento de botão de remover
   const button = document.createElement("button");
+  button.classList.add("remove");
   button.textContent = "X";
   // Remove o item da lista
   button.addEventListener("click", () => {
