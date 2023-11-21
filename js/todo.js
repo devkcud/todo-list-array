@@ -24,7 +24,6 @@ if (localStorage.getItem("todos")) {
 // TODO: Remover essa função e usar outro método de salvamento; não é tão ideal ter diversas vezes essa função por todo o código
 function __updateLocalStorage() {
   localStorage.setItem("todos", JSON.stringify(todos));
-  console.log(todos);
 }
 
 /** Adiciona uma tarefa no objeto **todos**.
@@ -35,7 +34,26 @@ function __updateLocalStorage() {
  */
 function addTodo(description, done = false) {
   // Gera um ID único aleatório
-  const uuid = crypto.randomUUID();
+  let uuid;
+
+  // Verifica se o browser suporta a função `crypto.randomUUID()`
+  if (!(window.crypto.randomUUID instanceof Function)) {
+    console.log("Seu navegador não suporta a função `crypto.randomUUID()`");
+    console.log("Usando método alternativo")
+
+    // Implementação alternativa
+    uuid = ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[-1]/g, (c) =>
+      (
+        c ^
+        (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))
+      ).toString(16),
+    );
+  } else {
+    // Standard
+    uuid = window.crypto.randomUUID();
+  }
+
+  console.log(uuid);
 
   // Adiciona a tarefa
   todos[uuid] = { description, done };
