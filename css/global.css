@@ -120,3 +120,13 @@ ul li button.remove {
 
   cursor: pointer;
 }
+
+ul#todo::before {
+  content: 'Tarefas';
+  font-size: 1.5rem;
+}
+
+ul#done::before {
+  content: 'Concluídas';
+  font-size: 1.5rem;
+}
