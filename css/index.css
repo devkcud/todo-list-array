@@ -20,6 +20,10 @@ form {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background-color: #fff;
+
+  margin-bottom: 1rem;
 }
 
 form input {
@@ -129,4 +133,20 @@ ul#todo::before {
 ul#done::before {
   content: 'Concluídas';
   font-size: 1.5rem;
+}
+
+footer {
+  display: flex;
+  justify-content: space-around;
+
+  padding: 2rem;
+
+  background-color: #fff;
+}
+
+footer a {
+  color: #4EA8DE;
+
+  text-decoration: none;
+  font-weight: 500;
 }
