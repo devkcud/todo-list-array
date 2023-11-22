@@ -32,3 +32,10 @@ main p::first-letter {
   margin-right: 6px;
   float: left;
 }
+
+main p:not(:first-of-type) {
+  border-top: 3px solid #ccc;
+
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
