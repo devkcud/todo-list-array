@@ -6,8 +6,6 @@ form {
   align-items: center;
   justify-content: center;
 
-  background-color: #fff;
-
   margin-bottom: 1rem;
 }
 
@@ -16,12 +14,11 @@ form input {
 
   padding: 0.5rem 1rem;
 
-  border: 3px solid #4ea8de;
-  border-right: none;
-  border-radius: 5px 0 0 5px;
+  border: none;
+  outline: transparent;
+  border-bottom: 3px solid #4ea8de;
 
   background: none;
-  color: #4ea8de;
 }
 
 form input::placeholder {
@@ -36,7 +33,7 @@ form button {
   height: 50px;
 
   border: none;
-  border-radius: 0 5px 5px 0;
+  border-radius: 100% 100% 100% 0;
 
   background-color: #4ea8de;
   color: #fff;
@@ -48,64 +45,68 @@ form button {
 }
 
 main {
+  min-height: calc(100vh - 100px - 1rem);
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 ul {
   list-style: none;
-  margin-inline: 1rem;
 }
 
 ul li {
-  position: relative;
-
-  width: 100%;
-
   display: flex;
   align-items: center;
 
+  gap: 1rem;
+
+  margin-inline: 1rem;
   margin-bottom: 1rem;
+  padding-bottom: 1rem;
 }
 
-ul li input {
-  width: 100%;
-  height: 50px;
+ul li:not(:last-of-type) {
+  border-bottom: 2px solid #ccc;
+}
 
-  padding: 0 55px;
+ul li button.remove,
+ul li button.checkbox {
+  width: 30px;
+  height: 30px;
 
-  border: 3px solid #4ea8de;
-  border-inline: none;
+  flex-shrink: 0;
+
+  border: none;
+
+  cursor: pointer;
 }
 
 ul li button.checkbox {
-  position: absolute;
-
-  width: 50px;
-  height: 50px;
-
-  border: 3px solid #4ea8de;
-
-  background-color: #ccc;
+  border: 2px solid #4ea8de;
+  border-radius: 100%;
 }
 
 ul li.done button.checkbox {
   background-color: #4ea8de;
+
+  border: none;
 }
 
 ul li button.remove {
-  position: absolute;
-  right: 0;
-
-  width: 50px;
-  height: 50px;
-
-  border: none;
-
-  background-color: #e25858;
+  background-color: #EE4B2B;
   color: #fff;
 
-  cursor: pointer;
+  border-radius: 4px;
+}
+
+ul li input[type="text"] {
+  width: 100%;
+  height: 30px;
+
+  padding-inline: 0.5rem;
+
+  border: none;
 }
 
 ul#todo::before,
@@ -115,6 +116,12 @@ ul#done::before {
   display: block;
 
   text-align: center;
+
+  margin-bottom: 1rem;
+
+  color: #4ea8de;
+
+  font-size: 1.5rem;
 }
 
 ul#todo::before {
