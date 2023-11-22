@@ -25,3 +25,10 @@ main p {
 
   max-width: 800px;
 }
+
+main p::first-letter {
+  font-size: 250%;
+  padding: 12px 2px;
+  margin-right: 6px;
+  float: left;
+}
