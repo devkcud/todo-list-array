@@ -1,0 +1,27 @@
+main {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+
+main h2 {
+  margin-bottom: 1rem;
+
+  font-size: 7vw;
+
+  cursor: default;
+}
+
+main p {
+  text-align: justify;
+
+  margin: 0 auto;
+  padding-inline: 1rem;
+
+  line-height: 1.5rem;
+
+  max-width: 800px;
+}
