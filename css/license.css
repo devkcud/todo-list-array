@@ -34,7 +34,7 @@ main p::first-letter {
 }
 
 main p:not(:first-of-type) {
-  border-top: 3px solid #ccc;
+  border-top: 2px solid #ccc;
 
   margin-top: 1rem;
   padding-top: 1rem;

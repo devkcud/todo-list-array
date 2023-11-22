@@ -24,13 +24,11 @@ footer {
   max-width: 900px;
 
   margin: 0 auto;
+  margin-block: 2rem;
 }
 
 footer a {
-  background-color: #4ea8de;
-  color: #fff;
-
-  padding: 0.5rem 1rem;
+  color: #4ea8de;
 
   border-radius: 5px 5px 0 0;
 
