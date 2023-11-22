@@ -10,7 +10,7 @@ main {
 main h2 {
   margin-bottom: 1rem;
 
-  font-size: 3rem;
+  font-size: 7vw;
 
   cursor: default;
 }
@@ -35,7 +35,7 @@ main ul li::marker {
   color: #999;
 }
 
-main ul li:not(:last-of-type)::after {
+main ul li::after {
   content: ";";
 }
 
