@@ -1,0 +1,44 @@
+main {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+}
+
+main h2 {
+  margin-bottom: 1rem;
+
+  font-size: 3rem;
+
+  cursor: default;
+}
+
+main ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 3rem;
+
+  list-style: decimal;
+}
+
+main ul li {
+  max-width: 300px;
+
+  text-align: justify;
+}
+
+main ul li::marker {
+  color: #999;
+}
+
+main ul li:not(:last-of-type)::after {
+  content: ";";
+}
+
+main ul li:last-of-type::after {
+  content: ".";
+}

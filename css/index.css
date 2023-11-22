@@ -1,18 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-
-  background-color: #E5E5E5;
-}
-
 form {
   width: 100%;
   height: 100px;
@@ -31,12 +16,12 @@ form input {
 
   padding: 0.5rem 1rem;
 
-  border: 3px solid #4EA8DE;
+  border: 3px solid #4ea8de;
   border-right: none;
   border-radius: 5px 0 0 5px;
 
   background: none;
-  color: #4EA8DE;
+  color: #4ea8de;
 }
 
 form input::placeholder {
@@ -53,7 +38,7 @@ form button {
   border: none;
   border-radius: 0 5px 5px 0;
 
-  background-color: #4EA8DE;
+  background-color: #4ea8de;
   color: #fff;
 
   text-transform: uppercase;
@@ -63,8 +48,6 @@ form button {
 }
 
 main {
-  min-height: calc(100vh - 100px);
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
@@ -91,7 +74,7 @@ ul li input {
 
   padding: 0 55px;
 
-  border: 3px solid #4EA8DE;
+  border: 3px solid #4ea8de;
   border-inline: none;
 }
 
@@ -101,13 +84,13 @@ ul li button.checkbox {
   width: 50px;
   height: 50px;
 
-  border: 3px solid #4EA8DE;
+  border: 3px solid #4ea8de;
 
   background-color: #ccc;
 }
 
 ul li.done button.checkbox {
-  background-color: #4EA8DE;
+  background-color: #4ea8de;
 }
 
 ul li button.remove {
@@ -119,34 +102,25 @@ ul li button.remove {
 
   border: none;
 
-  background-color: #E25858;
+  background-color: #e25858;
   color: #fff;
 
   cursor: pointer;
 }
 
+ul#todo::before,
+ul#done::before {
+  width: 100%;
+
+  display: block;
+
+  text-align: center;
+}
+
 ul#todo::before {
-  content: 'Tarefas';
-  font-size: 1.5rem;
+  content: "Tarefas";
 }
 
 ul#done::before {
-  content: 'Concluídas';
-  font-size: 1.5rem;
-}
-
-footer {
-  display: flex;
-  justify-content: space-around;
-
-  padding: 2rem;
-
-  background-color: #fff;
-}
-
-footer a {
-  color: #4EA8DE;
-
-  text-decoration: none;
-  font-weight: 500;
+  content: "Concluídas";
 }
