@@ -28,6 +28,8 @@ main ul {
 main ul li {
   max-width: 300px;
 
+  margin-inline: 1rem;
+
   text-align: justify;
 }
 
